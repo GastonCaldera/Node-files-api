@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  node-restapi:
+    container_name: node-restapi
+    build:
+      context: .
+      dockerfile: Dockerfile-local
+    ports:
+      - 8000:3000

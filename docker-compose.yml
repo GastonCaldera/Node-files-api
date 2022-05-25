@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  node-restapi:
+    container_name: node-restapi
+    build: .
+    ports:
+      - 8000:3000
