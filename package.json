@@ -6,15 +6,14 @@
   "scripts": {
     "docker-build": "docker build -t node-restapi .",
     "docker-compose": "docker-compose -f docker-compose.yml up -d --build",
-    "docker-compose-local": "docker-compose -f docker-compose.local.yml up -d --build",
     "start": "node src/app.js",
-    "dev-docker": "nodemon -L src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon -L src/app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1"
   },

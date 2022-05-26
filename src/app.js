@@ -1,10 +1,15 @@
-const express = require('express')
 require('dotenv').config();
+const express = require('express')
+const cors = require('cors')
 
-const app = express()
+const app = express();
 
 //middlewares
 app.use(express.json());
+app.use(cors({
+    methods:"*",
+    origin:"*"
+}))
 
 //routes
 app.use('/files', require("./routes/files.js"));
