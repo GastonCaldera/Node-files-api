@@ -10,3 +10,7 @@
 
 # run test
 * npm run test
+
+# endpoints
+* files/data
+* files/list
