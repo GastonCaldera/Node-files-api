@@ -13,8 +13,13 @@ app.use(cors({
 
 //routes
 app.use('/files', require("./routes/files.js"));
+app.get("/", (req,res) => {
+    res.status(200).send({message: "Welcome to the MEN-REST-API"});
+  }); 
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`listening on port ${port}`)
 })
+
+module.exports = app

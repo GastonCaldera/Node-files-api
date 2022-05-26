@@ -3,9 +3,10 @@ const client = require('../client/index')
 const listController = {
     dataList: async (req, res) => {
         try {
-            const fileName = req.query.filaName
+            const fileName = req.query.fileName
             const response = await client.get('/secret/files')
             let getData = response.data.files
+            
             if (!getData.length) {
                 return res.json({ "s": false, "m": "there are no files to search", "d": "" })
             }
@@ -13,7 +14,7 @@ const listController = {
             if (fileName !== undefined) {
                 getData = getData.filter(((element) => element === fileName))
                 if (!getData.length) {
-                    return res.json({ "s": false, "m": `fileName ${fileName} doesn't exist`, "d": "" })
+                    return res.status(404).json({ "s": false, "m": `fileName ${fileName} doesn't exist`, "d": "" })
                 }
             }
 
@@ -34,7 +35,6 @@ const listController = {
                             })
                         return { file: element, lines: lines }
                     } catch (error) {
-                        console.log({ ...error.response.data, fileName: element })
                         return ''
                     }
                 })
@@ -43,7 +43,7 @@ const listController = {
             const filterFileList = [...fileList.filter((item) => (item === '' || item.lines?.length === 0 || item.lines?.length === undefined) ? false : true)]
 
             if (!filterFileList.length) {
-                return res.json({ "s": false, "m": `fileName ${fileName} has no lines`, "d": "" })
+                return res.status(404).json({ "s": false, "m": `fileName ${fileName} has no lines`, "d": "" })
             }
 
             return res.json(filterFileList)

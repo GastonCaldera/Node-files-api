@@ -7,17 +7,21 @@
     "docker-build": "docker build -t node-restapi .",
     "docker-compose": "docker-compose -f docker-compose.yml up -d --build",
     "start": "node src/app.js",
-    "dev": "nodemon -L src/app.js"
+    "dev": "nodemon -L src/app.js",
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1"
   },
   "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
     "nodemon": "^2.0.16"
   }
 }
